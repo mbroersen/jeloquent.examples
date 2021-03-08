@@ -33,5 +33,8 @@ console.log(
   User.find(4).comments,
   Team.all(),
   User.all(),
-  Comment.all().first().user.team.comments
+  Comment.all().first().user.team.comments,
+  Comment.all().pluck("title", "id"),
+  Comment.all().where("text", "!=", "world").pluck("text", "id"),
+  Comment.all().where("text", "world").pluck("text", "id")
 );
