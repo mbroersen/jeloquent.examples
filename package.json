@@ -1,5 +1,5 @@
 {
-  "name": "Jeloquent Deom",
+  "name": "Jeloquent Demo",
   "version": "1.0.0",
   "description": "JavaScript example starter project",
   "main": "index.html",
@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "jeloquent": "2.14.0",
+    "jeloquent": "2.14.3",
     "parcel-bundler": "^1.6.1"
   },
   "devDependencies": {
@@ -17,8 +17,5 @@
   "resolutions": {
     "@babel/preset-env": "7.13.8"
   },
-  "keywords": [
-    "javascript",
-    "starter"
-  ]
+  "keywords": ["javascript", "starter"]
 }
