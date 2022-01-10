@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "jeloquent": "2.14.3",
+    "jeloquent": "3.0.9",
     "parcel-bundler": "^1.6.1"
   },
   "devDependencies": {
