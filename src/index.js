@@ -54,7 +54,7 @@ console.log(
 
 const connectionAdapter = ConnectionAdapterFactory.getAdapter(
   "jsonRequest",
-  new ConnectionSettings({url: "https://jsonplaceholder.typicode.com"})
+  new ConnectionSettings({baseUrl: "https://jsonplaceholder.typicode.com"})
 );
 const connection = new Connection(connectionAdapter);
 
