@@ -1,11 +1,18 @@
-import { Database, Store } from "jeloquent";
-import { User, Team, Comment, Avatar, UserAddress } from "./models.js";
+import {
+  Database,
+  Store,
+  Connection,
+  ConnectionSettings,
+  ConnectionAdapterFactory
+} from "jeloquent";
+import { User, Users, Team, Comment, Avatar, UserAddress } from "./models.js";
 
 const models = [User, Team, Comment, Avatar, UserAddress];
 
 const store = new Store();
 store.add(new Database("app", models));
 store.use("app");
+store.useConnection("default");
 
 Team.insert([
   { id: 1, name: "Test Team" },
@@ -38,3 +45,33 @@ console.log(
   Comment.all().where("text", "!=", "world").pluck("text", "id"),
   Comment.all().where("text", "world").pluck("text", "id")
 );
+
+console.log(
+  User.find(1).team.toObject(),
+  User.find(1).team.comments,
+  JSON.stringify(User.find(1).team.comments)
+);
+
+const connectionAdapter = ConnectionAdapterFactory.getAdapter(
+  "jsonRequest",
+  new ConnectionSettings({url: "https://jsonplaceholder.typicode.com"})
+);
+const connection = new Connection(connectionAdapter);
+
+store.add(new Database("connectionModels", [Users]));
+store.addConnection(connection);
+store.use("connectionModels");
+
+store
+  .connection()
+  .all(Users)
+  .then(() => {
+    Users.all().forEach((user) => {
+      console.log(user.toObject());
+    });
+
+    store.use("app");
+    User.all().forEach((user) => {
+      console.log(user.toObject());
+    });
+  });
