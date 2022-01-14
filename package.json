@@ -17,5 +17,8 @@
   "resolutions": {
     "@babel/preset-env": "7.13.8"
   },
-  "keywords": ["javascript", "starter"]
+  "keywords": [
+    "javascript",
+    "starter"
+  ]
 }
