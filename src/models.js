@@ -42,6 +42,18 @@ class User extends Model {
   }
 }
 
+class Users extends Model {
+  constructor() {
+    const fields = [
+      new Field("id", true), // primary
+      new Field("name"),
+      new Field("username"),
+      new Field("email")
+    ];
+    super(fields);
+  }
+}
+
 /**
  *
  */
@@ -94,4 +106,4 @@ class Comment extends Model {
   }
 }
 
-export { Team, User, Comment, Avatar, UserAddress };
+export { Team, User, Users, Comment, Avatar, UserAddress };
